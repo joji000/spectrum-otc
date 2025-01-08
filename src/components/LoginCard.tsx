@@ -4,11 +4,9 @@ import React from 'react'
 import { Avatar, Typography, Card, CardContent, Stack } from '@mui/material'
 import CustomLoginButton from './CustomLoginButton'
 
-interface LoginCardProps {
-  onClickGoogle: () => void
-}
 
-const LoginCard: React.FC<LoginCardProps> = ({ onClickGoogle }) => {
+
+const LoginCard: React.FC = ({ }) => {
   return (
     <Card
       sx={{
@@ -47,7 +45,7 @@ const LoginCard: React.FC<LoginCardProps> = ({ onClickGoogle }) => {
         {/* Buttons */}
         <Stack spacing={2} mt={2}>
           <CustomLoginButton
-            onClick={onClickGoogle}
+            
             logo="/icons/google-logo.svg"
             text="Continue with Google"
           />

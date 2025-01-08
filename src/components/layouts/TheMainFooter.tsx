@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from '@mui/material'
+import { Box, Container, Stack, Typography } from '@mui/material'
 import Image from 'next/image'
 
 const TheMainFooter = () => {
@@ -19,12 +19,22 @@ const TheMainFooter = () => {
             alignItems: 'center',
           }}
         >
-          <Image
-            src="/spectrum-footer.svg"
-            alt="logo"
-            width={100}
-            height={24}
-          />
+          <Stack spacing={1.5}>
+            <Image
+              src="/spectrum-footer.svg"
+              alt="logo"
+              width={100}
+              height={24}
+            />
+            <Typography
+              fontSize={'12px'}
+              fontWeight={'light'}
+              maxWidth={372}
+            >
+            Drop3 is the first automated OTC trading platform. Easily place a buy or sell order. Trade WLs, Tokens, Airdrops, Points, NFTs, Accounts & etc in a safe and integrated environment.
+            </Typography>
+          </Stack>
+          
           <Typography
             variant="body2"
             color="grey.400"
@@ -34,31 +44,26 @@ const TheMainFooter = () => {
           >
             Copyright &#169; 2024 - Spectrumlive
           </Typography>
-          <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-            <Typography
-              variant="body2"
-              color="grey.400"
-              fontWeight={500}
-              sx={{ fontSize: { xs: '0.5rem', sm: '0.875rem' } }}
-            >
-              Terms of Service
+
+          <Stack>
+            <Typography fontSize={'12px'}
+              fontWeight={'bold'}>
+              Link
             </Typography>
-            <Box
-              sx={{
-                height: '16px',
-                width: '1px',
-                backgroundColor: 'grey.400',
-              }}
-            />
-            <Typography
-              variant="body2"
-              color="grey.400"
-              fontWeight={500}
-              sx={{ fontSize: { xs: '0.5rem', sm: '0.875rem' } }}
-            >
-              Privacy Policy
+            <Typography fontSize={'12px'}
+              fontWeight={'light'}>
+              Home
             </Typography>
-          </Box>
+            <Typography fontSize={'12px'}
+              fontWeight={'light'}>
+              About
+            </Typography>
+            <Typography fontSize={'12px'}
+              fontWeight={'light'}>
+              FAQ
+            </Typography>
+
+          </Stack>
         </Box>
       </Container>
     </Box>
