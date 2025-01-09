@@ -1,6 +1,15 @@
-import { Box ,Stack,Typography,Container,Grid2} from '@mui/material'
+'use client'
+import CheckoutDocsIcon from '@/components/icons/CheckoutDocsIcon'
+import OpenIcon from '@/components/icons/OpenIcon'
+import { 
+  Box,
+  Stack,
+  Typography,
+  Container, 
+  Button,
+  Grid2 } from '@mui/material'
 import QuestionAnswer from '@/components/QuestionAnswer'
-
+import FeatureCard from '@/components/FeatureCard'
 
 export default function Home() {
   return (
@@ -28,49 +37,115 @@ export default function Home() {
             zIndex: 1,
           }}
         />
+          <Container
+            sx={{
+              position: 'relative',
+              zIndex: 2,
+              textAlign: 'left',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              gap: 2,
+            }}
+          >
+            <Stack>
+              <Typography
+                variant="h2"
+                gutterBottom
+                maxWidth={650}
+                fontWeight= 'bold'
+                sx={{
+                  background: 'linear-gradient(to bottom,#FFFFFF, #999999 85%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  fontWeight: 'bold',
+                  }}
+                >
+                  The Biggest OTC Market In The World
+              </Typography>
+              <Typography
+                variant="subtitle2"
+                fontWeight={500}
+                gutterBottom
+                maxWidth={650}
+                color="grey.400"
+              >
+                Drop3 is the first automated OTC trading platform. Easily place a buy or sell order. Trade WLs,
+                Tokens, Airdrops, Points, NFTs, Accounts & etc in a safe and integrated environment. 
+              </Typography>
+            </Stack>
 
-        <Container
+            <Stack sx={{
+              flexDirection:'row',
+              gap: 1,
+              mt: 2
+            }}>
+              <Button variant="contained" startIcon={<OpenIcon/>}>Launch App</Button>
+              <Button 
+                variant="contained" 
+                startIcon={<CheckoutDocsIcon/>}
+                sx={{
+                  background: 'linear-gradient(to right,#400ED3, #5562FC)',
+                }}>Check out docs</Button>
+            </Stack> 
+          </Container>
+      </Box>
+      <Container sx={{ py: 8 }}>
+        <Grid2
+          spacing={1}
+          container
           sx={{
-            position: 'relative',
-            zIndex: 2,
-            textAlign: 'left',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            gap: 2,
+            paddingTop: '1rem',
           }}
         >
-        <Stack>
-          <Typography
-            variant="h2"
-            gutterBottom
-            maxWidth={650}
-            fontWeight= 'bold'
-            sx={{
-              background: 'linear-gradient(to bottom,#FFFFFF, #999999 85%)', // Gold, Yellow, Copper metallic gradient
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              fontWeight: 'bold',
-              }}
+          <Grid2
+            size={{
+              xs: 12,
+              md: 6,
+              lg: 3,
+            }}
           >
-            The Biggest OTC Market In The World
-          </Typography>
-          <Typography
-            variant="subtitle2"
-            fontWeight={500}
-            gutterBottom
-            maxWidth={650}
-            color="grey.400"
+            <FeatureCard
+              icon='/icons/secureIcon.svg'
+              label='Secure'/>
+          </Grid2>
+          <Grid2
+            size={{
+              xs: 12,
+              md: 6,
+              lg: 3,
+            }}
           >
-            Drop3 is the first automated OTC trading platform. Easily place a buy or sell order. Trade WLs,
-            Tokens, Airdrops, Points, NFTs, Accounts & etc in a safe and integrated environment. 
-          </Typography>
-        </Stack>
-        </Container>
-      </Box>
+            <FeatureCard
+              icon='/icons/fastIcon.svg'
+              label='Fast'/>
+          </Grid2>
+          <Grid2
+            size={{
+              xs: 12,
+              md: 6,
+              lg: 3,
+            }}
+          >
+            <FeatureCard
+              icon='/icons/earlyIcon.svg'
+              label='Easy access'/>
+          </Grid2>
+          <Grid2
+            size={{
+              xs: 12,
+              md: 6,
+              lg: 3,
+            }}
+          >
+            <FeatureCard
+              icon='/icons/automateIcon.svg'
+              label='Automated'/>
+          </Grid2>
+        </Grid2>
+      </Container>
 
-
-        <Container sx={{ py: 8 }}>
+      <Container sx={{ pt: 2, pb: 8 }}>
         <Stack gap={3}>
           <Typography variant="h3" color="gradient">
             FAQ
@@ -79,15 +154,15 @@ export default function Home() {
             <Grid2 size={{ xs: 12, md: 6 }}>
               <Stack gap={2}>
                 <QuestionAnswer
-                  question="What types of games can I host?"
+                  question="What is Drop3?"
                   answer="Hosting games can be a great way to bring people together and have fun. Here are some types of games you can consider hosting, depending on the preferences of your group and the available resources"
                 />
                 <QuestionAnswer
-                  question="What types of games can I host?"
+                  question="Why Drop3?"
                   answer="Hosting games can be a great way to bring people together and have fun. Here are some types of games you can consider hosting, depending on the preferences of your group and the available resources"
                 />
                 <QuestionAnswer
-                  question="What types of games can I host?"
+                  question="What if we encounter a problem during the agreement?"
                   answer="Hosting games can be a great way to bring people together and have fun. Here are some types of games you can consider hosting, depending on the preferences of your group and the available resources"
                 />
               </Stack>
@@ -95,11 +170,11 @@ export default function Home() {
             <Grid2 size={{ xs: 12, md: 6 }}>
               <Stack gap={2}>
                 <QuestionAnswer
-                  question="What types of games can I host?"
+                  question="What should we do to place an order?"
                   answer="Hosting games can be a great way to bring people together and have fun. Here are some types of games you can consider hosting, depending on the preferences of your group and the available resources"
                 />
                 <QuestionAnswer
-                  question="What types of games can I host?"
+                  question="How to make a purchase?"
                   answer="Hosting games can be a great way to bring people together and have fun. Here are some types of games you can consider hosting, depending on the preferences of your group and the available resources"
                 />
               </Stack>
@@ -107,7 +182,6 @@ export default function Home() {
           </Grid2>
         </Stack>
       </Container>
-      
     </>
   )
 }

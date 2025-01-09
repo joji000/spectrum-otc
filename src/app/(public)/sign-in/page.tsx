@@ -14,10 +14,10 @@ const SignInPage = () => {
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%',
-        marginTop: 5,
+        pt: 5
       }}
     >
-      <LoginCard/>
+      <LoginCard />
     </Container>
   )
 }

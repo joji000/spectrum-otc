@@ -9,6 +9,7 @@ const TheMainFooter = () => {
         backgroundColor: 'grey.600',
         display: 'flex',
         alignItems: 'center',
+        py: 8
       }}
     >
       <Container>

@@ -9,7 +9,7 @@ export default function Layout({ children }: Props) {
       <Box
         sx={{
           backgroundImage: 'url(/login-bg.png)',
-          height: 'calc(100vh - 108px)',
+          height: '100vh',
         }}
       >
         {children}
