@@ -9,7 +9,7 @@ import {
   Button,
   Grid2 } from '@mui/material'
 import QuestionAnswer from '@/components/QuestionAnswer'
-import FeatureCard from '@/components/FeatureCard'
+import FeatureCardsContainer from '@/components/FeatureCardContainer'
 
 export default function Home() {
   return (
@@ -91,58 +91,7 @@ export default function Home() {
           </Container>
       </Box>
       <Container sx={{ py: 8 }}>
-        <Grid2
-          spacing={1}
-          container
-          sx={{
-            paddingTop: '1rem',
-          }}
-        >
-          <Grid2
-            size={{
-              xs: 12,
-              md: 6,
-              lg: 3,
-            }}
-          >
-            <FeatureCard
-              icon='/icons/secureIcon.svg'
-              label='Secure'/>
-          </Grid2>
-          <Grid2
-            size={{
-              xs: 12,
-              md: 6,
-              lg: 3,
-            }}
-          >
-            <FeatureCard
-              icon='/icons/fastIcon.svg'
-              label='Fast'/>
-          </Grid2>
-          <Grid2
-            size={{
-              xs: 12,
-              md: 6,
-              lg: 3,
-            }}
-          >
-            <FeatureCard
-              icon='/icons/earlyIcon.svg'
-              label='Easy access'/>
-          </Grid2>
-          <Grid2
-            size={{
-              xs: 12,
-              md: 6,
-              lg: 3,
-            }}
-          >
-            <FeatureCard
-              icon='/icons/automateIcon.svg'
-              label='Automated'/>
-          </Grid2>
-        </Grid2>
+        <FeatureCardsContainer />
       </Container>
 
       <Container sx={{ pt: 2, pb: 8 }}>
