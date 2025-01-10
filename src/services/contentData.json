@@ -1,0 +1,189 @@
+{
+    "what-is-drop3": {
+      "title": "What is Drop3?",
+      "subtitle": "An introduction to Drop3",
+      "sections": [
+      {
+        "content": "Drop3 is a long-term project that aims to create a Secure platform for Web3 deals."
+      },
+      {
+        "content": "If you want to make a deal, how can you trust a person in web3?! That trust is never 100% and has many risks. Drop3 is now an intermediary market for all your deals. You can trade various assets such as Tokens, NFTs, Points, Airdrops, Job deals, etc. in our market in a completely safe and automatic way."
+      },
+      {
+        "content": ["All processes in Drop3 market are done Automatically.",
+        "You can pay with +300 Cryptocurrencies through our secure payment gateway.",
+        "Whether you are a Buyer or Seller, you can easily submit your orders for Free.",
+        "You can also search between existing orders. Use the available filters to separate the orders.",
+        "Send an offer or make a quick deal.",
+        "Easily chat with users and finalize your deals.",
+        "Withdraw your balance whenever you need.",
+        "Use our monetization system.",
+        "And etc..."]
+      },
+      {
+        "image": "/docs-image/whatisdrop.png"
+      }
+      ]
+      
+    },
+
+    "how-to-start": {
+      "title": "How to start",
+      "subtitle": "Login to your account",
+      "sections": [
+      {
+        "content": "You only need a Discord account to start using our platform."
+      },
+      {
+        "content": "Enter the platform from the following address: https://app.drop3.io/"
+      },
+      {
+        "content": "Then you will see the login icon at the top of the screen. Just click on it and sign in with your Discord account."
+      },
+      {
+        "content": "After logging into your account, you can view your account information from the dashboard section."
+      },
+      {
+        "image": "/docs-image/howtostart.png"
+      }
+      ]
+      
+    },
+
+    "create-orders": {
+      "title": "Create Orders",
+      "subtitle": "Create your first order",
+      "sections": [
+      {
+        "content": "Let's place our first order together. This process is very fast and smooth in Drop3 and is completely free.After logging into your account, enter the Dashboard section and and select \"New order\" from the menu."
+      },
+      {
+        "image": "/docs-image/createorder1.png"
+      },
+      {
+        "content": "Here you need to complete your order information:"
+      },
+      {
+        "image": "/docs-image/createorder2.png"
+      },
+      {
+        "content": ["Market Type: Choose your order type. It depends on which of the available markets your order belongs to.",
+        "Title: Enter a title for your order. Note that this helps users to better access and recognize your order.",   
+        "Order side: Specify whether you are a Seller or Buyer.",  
+        "Network: Choose the network related to your order.", 
+        "Each Token price: Enter the price of each token. (USD)",  
+        "Quantity: Enter the quantity of WL/Token that you want to place in the order.",
+        "Offered collateral: This is a guarantee. The seller must put a collateral so that the buyer is sure that this is not a fake deal. Whether you are a Buyer or Seller, you must enter your offered collateral that you want to receive or give. (This field does not exist in the general market)"
+      ]
+      }
+      ]
+    },
+
+    "wl-market": {
+      "title": "WL Market",
+      "sections": [
+      {
+        "content": "This market is specially designed for buying and selling projects WL. You can easily trade your WLs."
+      },
+      {
+        "image": "/docs-image/wlmarket1.png"
+      },
+      {
+        "content": "Like other markets, fill in the fields and place your order easily."
+      },
+      {
+        "image": "/docs-image/wlmarket2.png"
+      },
+      {
+        "content": "Deal type: Specify how the deal is done:",
+        "list": ["Discord (If you want, give your Discord account)",
+        "Mint (If you do the mint and send it to them)",
+        "Wallet Register (If you register their wallet)",
+        "Wallet Surrender (If you give them your wallet)",
+        "Other (If you have another method in mind)"
+      ]
+      },
+      {
+        "content": "Order Role: Specify here whether you are placing WL or OG."
+      }
+      ]
+    },
+
+    "public-market": {
+      "title": "Public Market",
+      "sections": [
+      {
+        "content": "You can trade anything you want in the Public Market."
+      },
+      {
+        "image": "/docs-image/publicmarket1.png"
+      },
+      {
+        "content": "Like other markets, fill in the fields and place your order easily."
+      },
+      {
+        "image": "/docs-image/publicmarket2.png"
+      },
+      {
+        "content": ["Asset Type: Specify the type of asset you want to trade. This is used for categorization.",
+        "Order Side: Specify whether you are a provider or a requester (Cunsomer)."]
+      } 
+      ] 
+    },
+
+    "manage-balance": {
+      "title": "Manage Balance",
+      "subtitle": "Manage your account balance",
+      "sections": [
+      {
+        "content": "You can manage your account balance from the Balance section. To enter this section, just enter the dashboard and select \"Balance\" from the menu. Here you can view and manage all payment information and account balance."
+      },
+      {
+        "content": "Now you can see all the information:"
+      },
+      {
+        "image": "/docs-image/managebalance.png"
+      },
+      {
+        "content": ["Balance: This number shows your withdrawable balance on the platform.",
+        "Locked Balance: This is your locked balance in your active orders that have not yet been released.",      
+        "Deposit: From this section you can increase your account balance. Enter the amount of USD you want to add and then using our secure payment gateway powered by NOWPayment, you can make payments with more than 300+ cryptocurrencies. (No need to connect a wallet)",     
+        "Withdrawal: You can withdraw your transferable balance from this section. (We do all withdrawals manually and this action is necessary to maintain the security of withdrawals)",
+        "Transactions: From here you can view the records of all your transactions."
+      ]
+      } 
+      ] 
+    },
+
+    "manage-orders": {
+      "title": "Manage Orders",
+      "subtitle": "Manage your open orders",
+      "sections": [
+        {
+          "content": [
+            "Here you can view and manage your orders. To enter this section, after entering the dashboard section, select \"My orders\" from the menu.",
+            "Now you can see all your active orders and cancel them if needed. (Note that if you have open offers on the order, you must first cancel them and then cancel the order)"
+          ]
+        },
+        {
+          "image": "/docs-image/manageorder.png"
+        }
+        ] 
+    },
+
+    "manage-offers": {
+      "title": "Manage Offers",
+      "subtitle": "Manage all your offers",
+      "sections": [
+        {
+          "content": [
+            "From this section you can see all your offers. After entering the dashboard, select \"My Offers\" from the menu.",
+            "Now you can see all the offers sent on your orders, or the offers you sent to others with complete information and their status."
+          ]
+        },
+        {
+          "image": "/docs-image/manageoffer.png"
+        }
+        ] 
+    } 
+  }

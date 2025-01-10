@@ -6,7 +6,7 @@ const TheMainFooter = () => {
     <Box
       sx={{
         height: '108px',
-        backgroundColor: 'grey.600',
+        backgroundColor: '#06060A',
         display: 'flex',
         alignItems: 'center',
         py: 8
@@ -41,7 +41,7 @@ const TheMainFooter = () => {
             color="grey.400"
             fontWeight={500}
             textAlign={{ xs: 'center', sm: 'left' }}
-            sx={{ fontSize: { xs: '0.5rem', sm: '0.875rem' } }}
+            sx={{ fontSize: { xs: '0.5rem', sm: '0.875rem' }, mr: '200px' }}
           >
             Copyright &#169; 2024 - Spectrumlive
           </Typography>

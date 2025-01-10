@@ -10,6 +10,7 @@ import {
   Grid2 } from '@mui/material'
 import QuestionAnswer from '@/components/QuestionAnswer'
 import FeatureCardsContainer from '@/components/FeatureCardContainer'
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -81,12 +82,15 @@ export default function Home() {
               mt: 2
             }}>
               <Button variant="contained" startIcon={<OpenIcon/>}>Launch App</Button>
-              <Button 
-                variant="contained" 
-                startIcon={<CheckoutDocsIcon/>}
-                sx={{
-                  background: 'linear-gradient(to right,#400ED3, #5562FC)',
-                }}>Check out docs</Button>
+              <Link href="/docs-page/what-is-drop3" passHref>
+                <Button 
+                  variant="contained" 
+                  startIcon={<CheckoutDocsIcon/>}
+                  sx={{
+                    background: 'linear-gradient(to right,#400ED3, #5562FC)',
+                  }}
+                >Check out docs</Button>
+              </Link>
             </Stack> 
           </Container>
       </Box>
