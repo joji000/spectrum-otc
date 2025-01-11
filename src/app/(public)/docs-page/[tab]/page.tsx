@@ -45,14 +45,9 @@ export default function DocTabPage() {
           {content.title}
         </Typography>
         {content.subtitle && (
-          <Typography variant="body1" gutterBottom>
+          <Typography variant="subtitle1" mb={4} gutterBottom>
             {content.subtitle}
           </Typography>
-        )}
-        {content.image && (
-          <Box sx={{ textAlign: 'center', my: 4 }}>
-            <Image src={content.image} alt={content.title} layout="responsive" width={600} height={400} />
-          </Box>
         )}
         {content.sections.map((section, index) => (
           <Box key={index} sx={{ my: 2 }}>
@@ -60,23 +55,25 @@ export default function DocTabPage() {
               <ul>
                 {section.content.map((item, idx) => (
                   <ul key={idx}>
-                    <Typography variant="body2">{item}</Typography>
+                    <Typography fontWeight="light" variant="subtitle2" >{item}</Typography>
                   </ul>
                 ))}
               </ul>
             ) : (
-              section.content && <Typography variant="body2">{section.content}</Typography>
+              section.content && <Typography fontWeight="light" variant="subtitle2">{section.content}</Typography>
             )}
             {section.image && (
-              <Box sx={{ textAlign: 'center', my: 4 }}>
-                <Image src={section.image} alt={`Section image ${index + 1}`} layout="responsive" width={600} height={400} />
+              <Box sx={{ my: 4, display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ width:'80%' }}>
+                  <Image src={section.image} alt={`Section image ${index + 1}`} layout="responsive" width={600} height={400} />
+                </Box>
               </Box>
             )}
             {section.list && (
               <ul>
                 {section.list.map((item, idx) => (
                   <li key={idx}>
-                    <Typography variant="body2" my={2}>{item}</Typography>
+                    <Typography fontWeight="light" variant="subtitle2">{item}</Typography>
                   </li>
                 ))}
               </ul>

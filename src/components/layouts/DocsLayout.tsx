@@ -74,7 +74,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
                   }
                 }}
                 selected={pathname === tab.href}
-                sx={{justifyContent: 'space-between' ,minWidth: 277}}
+                sx={{justifyContent: 'space-between',width:'277px'}}
               >
                 <ListItemText
                   primary={

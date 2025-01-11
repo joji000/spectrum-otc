@@ -1,5 +1,22 @@
-import { Box, Container, Stack, Typography } from '@mui/material'
+import { Box, Container, Stack, Typography, Link} from '@mui/material'
+import NextLink from 'next/link'
 import Image from 'next/image'
+
+const menuItems = [
+  {
+    href: '/Home',
+    label: 'Home',
+  },
+  {
+    href: '/About',
+    label: 'About',
+  },
+  {
+    href: '/FAQ',
+    label: 'FAQ',
+  },
+]
+
 
 const TheMainFooter = () => {
   return (
@@ -28,7 +45,7 @@ const TheMainFooter = () => {
               height={24}
             />
             <Typography
-              fontSize={'12px'}
+              fontSize={{ xs: '0.5rem', sm: '0.775rem' }}
               fontWeight={'light'}
               maxWidth={372}
             >
@@ -41,29 +58,30 @@ const TheMainFooter = () => {
             color="grey.400"
             fontWeight={500}
             textAlign={{ xs: 'center', sm: 'left' }}
-            sx={{ fontSize: { xs: '0.5rem', sm: '0.875rem' }, mr: '200px' }}
+            sx={{ fontSize: { xs: '0.5rem', sm: '0.875rem' }, mr: '5rem' }}
           >
             Copyright &#169; 2024 - Spectrumlive
           </Typography>
-
-          <Stack>
-            <Typography fontSize={'12px'}
+          
+          <Stack alignItems="center" direction="column">
+            <Typography fontSize={{ xs: '0.5rem', sm: '0.875rem' }}
               fontWeight={'bold'}>
               Link
             </Typography>
-            <Typography fontSize={'12px'}
-              fontWeight={'light'}>
-              Home
-            </Typography>
-            <Typography fontSize={'12px'}
-              fontWeight={'light'}>
-              About
-            </Typography>
-            <Typography fontSize={'12px'}
-              fontWeight={'light'}>
-              FAQ
-            </Typography>
-
+            {menuItems.map((menuItem) => {
+              return (
+                <Link
+                  fontWeight={'light'}
+                  fontSize={{ xs: '0.4rem', sm: '0.775rem' }}
+                  sx={{ color: 'common.white' }}
+                  key={menuItem.href}
+                  component={NextLink}
+                  href={menuItem.href}
+                >
+                  {menuItem.label}
+                </Link>
+              )
+            })}
           </Stack>
         </Box>
       </Container>
