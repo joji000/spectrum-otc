@@ -1,6 +1,6 @@
 import { Box, Container, Stack, Typography, Link} from '@mui/material'
 import NextLink from 'next/link'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 const menuItems = [
   {

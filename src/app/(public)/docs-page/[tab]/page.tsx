@@ -3,7 +3,7 @@ import contentData from '@/services/contentData.json';
 import { usePathname } from 'next/navigation';
 import { Box, Container, Typography } from '@mui/material';
 import DocsLayout from '@/components/layouts/DocsLayout';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 type ContentDataKeys = keyof typeof contentData;
 
