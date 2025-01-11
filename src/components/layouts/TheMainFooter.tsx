@@ -1,6 +1,6 @@
 import { Box, Container, Stack, Typography, Link} from '@mui/material'
 import NextLink from 'next/link'
-import Image from "next/legacy/image"
+import Image from "next/image"
 
 const menuItems = [
   {
@@ -20,7 +20,7 @@ const menuItems = [
 
 const TheMainFooter = () => {
   return (
-    <Box
+    (<Box
       sx={{
         height: '108px',
         backgroundColor: '#06060A',
@@ -43,11 +43,14 @@ const TheMainFooter = () => {
               alt="logo"
               width={100}
               height={24}
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
             <Typography
               fontSize={{ xs: '0.5rem', sm: '0.775rem' }}
               fontWeight={'light'}
-              maxWidth={372}
+              maxWidth={'30em'}
             >
             Drop3 is the first automated OTC trading platform. Easily place a buy or sell order. Trade WLs, Tokens, Airdrops, Points, NFTs, Accounts & etc in a safe and integrated environment.
             </Typography>
@@ -85,8 +88,8 @@ const TheMainFooter = () => {
           </Stack>
         </Box>
       </Container>
-    </Box>
-  )
+    </Box>)
+  );
 }
 
 export default TheMainFooter

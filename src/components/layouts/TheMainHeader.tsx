@@ -88,7 +88,7 @@ const TheMainHeader = () => {
   )
 
   const logo = (
-    <NextLink href="/">
+    <NextLink href="/home">
       <Stack direction="row" alignItems="center" gap={1}>
         <Avatar sx={{ width: 78, height: 60 }} src="/icons/logo.svg" />
         <Avatar
@@ -160,7 +160,7 @@ const TheMainHeader = () => {
                 <Stack gap={1}>
                   {menuContent}
                   <Button variant="contained" startIcon={<OpenIcon/>}>APP</Button>
-                  <Button variant="outlined">Login</Button>
+                  <Button variant="outlined" href={'/sign-in'}>Login</Button>
                 </Stack>
               </Drawer>
             </Stack>
@@ -176,7 +176,14 @@ const TheMainHeader = () => {
               {logo}
             </Stack>
           </Box>
-          <Stack alignItems="center" direction="row" gap={1}>
+          <Stack alignItems="center" direction="row" gap={1} 
+          sx={{
+                display: {
+                  xs: 'none',
+                  md: 'flex',
+                },
+                alignItems: 'center',
+              }}>
             {menuItems.map((menuItem) => {
               return (
                 <Link
@@ -190,7 +197,7 @@ const TheMainHeader = () => {
               )
             })}
             <Button variant="contained" startIcon={<OpenIcon/>}>APP</Button>
-            <Button variant="outlined">Login</Button>
+            <Button variant="outlined" href={'/sign-in'}>Login</Button>
           </Stack>
         </Stack>
       </Container>
