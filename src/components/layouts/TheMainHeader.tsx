@@ -88,7 +88,7 @@ const TheMainHeader = () => {
   )
 
   const logo = (
-    <NextLink href="/home">
+    <NextLink href="/">
       <Stack direction="row" alignItems="center" gap={1}>
         <Avatar sx={{ width: 78, height: 60 }} src="/icons/logo.svg" />
         <Avatar

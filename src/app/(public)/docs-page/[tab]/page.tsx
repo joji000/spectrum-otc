@@ -4,7 +4,6 @@ import { usePathname } from 'next/navigation';
 import { Box, Container, Typography } from '@mui/material';
 import DocsLayout from '@/components/layouts/DocsLayout';
 import Image from "next/image";
-import DocsHeader from '@/components/layouts/DocsHeader';
 
 type ContentDataKeys = keyof typeof contentData;
 
@@ -94,7 +93,6 @@ export default function DocTabPage() {
 
   return (
     <>
-    <DocsHeader/>
     <Box
       sx={{
         display: 'flex',

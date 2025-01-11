@@ -6,6 +6,7 @@ import { ThemeProvider } from '@mui/material'
 import theme from '@/Theme'
 import TheMainLayout from '@/components/layouts/TheMainLayout'
 
+
 const notoSansThai = Noto_Sans_Thai({
   subsets: ['thai', 'latin'],
   weight: ['300', '400', '500', '600', '700'],

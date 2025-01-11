@@ -6,7 +6,7 @@ import NextLink from 'next/link';
 
 const DocsHeader = () => {
   const logo = (
-    <NextLink href="/home">
+    <NextLink href="/">
       <Stack direction="row" alignItems="center" gap={1}>
         <Avatar sx={{ width: 78, height: 60 }} src="/icons/logo.svg" alt="Logo Icon" />
         <Avatar
@@ -41,11 +41,9 @@ const DocsHeader = () => {
           direction="row"
           justifyContent="space-between"
           alignItems="center"
-          gap={2}
+          gap={2}         
         >
-          {/* Logo */}
-          {logo}
-
+            {logo}
           {/* Search Input */}
           <TextField
             placeholder="Search"
