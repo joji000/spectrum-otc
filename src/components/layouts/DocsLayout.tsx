@@ -10,7 +10,6 @@ import {
   Collapse,
   Typography,
   Drawer,
-  IconButton,
 } from '@mui/material';
 import { ExpandLess, ExpandMore, Menu } from '@mui/icons-material';
 
@@ -21,46 +20,48 @@ interface DocsTab {
 }
 
 const docsTabs: DocsTab[] = [
-  { label: 'What is Drop3?', href: '/docs-page/what-is-drop3' },
-  { label: 'How to start', href: '/docs-page/how-to-start' },
+  { label: 'What is Drop3?', href: '/docs/what-is-drop3' },
+  { label: 'How to start', href: '/docs/how-to-start' },
   {
     label: 'Create Orders',
-    href: '/docs-page/create-orders',
+    href: '/docs/create-orders',
     subItems: [
-      { label: 'WL Market', href: '/docs-page/wl-market' },
-      { label: 'Public Market', href: '/docs-page/public-market' },
+      { label: 'WL Market', href: '/docs/wl-market' },
+      { label: 'Public Market', href: '/docs/public-market' },
     ],
   },
-  { label: 'Manage Balance', href: '/docs-page/manage-balance' },
-  { label: 'Manage Orders', href: '/docs-page/manage-orders' },
-  { label: 'Manage Offers', href: '/docs-page/manage-offers' },
+  { label: 'Manage Balance', href: '/docs/manage-balance' },
+  { label: 'Manage Orders', href: '/docs/manage-orders' },
+  { label: 'Manage Offers', href: '/docs/manage-offers' },
 ];
 
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
 
+  
   const [openSections, setOpenSections] = useState<{ [key: string]: boolean }>({});
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  useEffect(() => {
-    const activeSections: { [key: string]: boolean } = {};
-    docsTabs.forEach((tab) => {
-      if (tab.subItems?.some((subTab) => subTab.href === pathname)) {
-        activeSections[tab.label] = true;
-      }
-    });
-    setOpenSections(activeSections);
-  }, [pathname]);
-
+  
   const handleToggle = (label: string) => {
     setOpenSections((prev) => ({ ...prev, [label]: !prev[label] }));
   };
 
+ 
   const handleNavigation = (href: string) => {
     router.push(href);
     setDrawerOpen(false);
   };
+
+ 
+  useEffect(() => {
+    docsTabs.forEach((tab) => {
+      if (tab.subItems?.some((subTab) => subTab.href === pathname)) {
+        setOpenSections((prev) => ({ ...prev, [tab.label]: true }));
+      }
+    });
+  }, [pathname]);
 
   const sidebarContent = (
     <List>
@@ -71,9 +72,6 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
               onClick={() => {
                 if (tab.href) {
                   handleNavigation(tab.href);
-                }
-                if (tab.subItems) {
-                  handleToggle(tab.label);
                 }
               }}
               selected={pathname === tab.href}
@@ -98,11 +96,21 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
                   </Typography>
                 }
               />
-              {tab.subItems && (openSections[tab.label] ? <ExpandLess /> : <ExpandMore />)}
+              {tab.subItems && (
+                <Box
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleToggle(tab.label);
+                  }}
+                  sx={{ cursor: 'pointer' }}
+                >
+                  {openSections[tab.label] ? <ExpandLess /> : <ExpandMore />}
+                </Box>
+              )}
             </ListItemButton>
           </ListItem>
           {tab.subItems && (
-            <Collapse in={openSections[tab.label]} >
+            <Collapse in={openSections[tab.label]} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 {tab.subItems.map((subTab) => (
                   <ListItemButton
@@ -163,12 +171,18 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
           },
         }}
       >
-        <IconButton
-          sx={{ position: 'absolute'}}
+        <Box
+          sx={{
+            position: 'absolute',
+            backgroundColor: '#06060A',
+            width: '100%',
+            borderBottom: '1px solid #fff',
+            height: '30px',
+          }}
           onClick={() => setDrawerOpen(true)}
         >
           <Menu />
-        </IconButton>
+        </Box>
         <Drawer
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}
@@ -177,7 +191,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
               width: 250,
               backgroundColor: '#06060A',
               color: '#fff',
-              mt:12
+              mt: 15.5,
             },
           }}
         >
@@ -194,6 +208,10 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
           ml: {
             xs: 0,
             md: '280px',
+          },
+          mt: {
+            xs: 2,
+            md: 0,
           },
           backgroundColor: '#06060A',
           color: '#fff',

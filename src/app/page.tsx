@@ -82,7 +82,7 @@ export default function Home() {
               mt: 2
             }}>
               <Button variant="contained" startIcon={<OpenIcon/>}>Launch App</Button>
-              <Link href="/docs-page/what-is-drop3" passHref>
+              <Link href="/docs/what-is-drop3" passHref>
                 <Button 
                   variant="contained" 
                   startIcon={<CheckoutDocsIcon/>}

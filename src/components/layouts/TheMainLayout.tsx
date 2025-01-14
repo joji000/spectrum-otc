@@ -11,10 +11,10 @@ const TheMainLayout = ({ children }: PropsWithChildren) => {
   const pathname = usePathname();
 
   let Header;
-  if (pathname.startsWith("/docs-page")) {
+  if (pathname.startsWith("/docs")) {
     Header = DocsHeader;
   } else if (pathname.startsWith("/sign-in")) {
-    Header = LoginHeader; // Default header or none
+    Header = LoginHeader;
   } else {
     Header = TheMainHeader;
   }
