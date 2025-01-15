@@ -19,7 +19,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
   const pathname = usePathname();
 
   const [openSections, setOpenSections] = useState<{ [key: string]: boolean }>(() => {
-    const savedState = localStorage.getItem('openSections');
+    const savedState = sessionStorage.getItem('openSections');
     return savedState ? JSON.parse(savedState) : {};
   });
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -27,7 +27,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
   const handleToggle = (label: string) => {
     setOpenSections((prev) => {
       const newState = { ...prev, [label]: !prev[label] };
-      localStorage.setItem('openSections', JSON.stringify(newState));
+      sessionStorage.setItem('openSections', JSON.stringify(newState));
       return newState;
     });
   };
@@ -42,7 +42,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
       if (tab.subItems?.some((subTab) => subTab.href === pathname)) {
         setOpenSections((prev) => {
           const newState = { ...prev, [tab.label]: true };
-          localStorage.setItem('openSections', JSON.stringify(newState));
+          sessionStorage.setItem('openSections', JSON.stringify(newState));
           return newState;
         });
       }
