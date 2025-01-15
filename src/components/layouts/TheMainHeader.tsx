@@ -20,7 +20,7 @@ import OpenIcon from '../icons/OpenIcon'
 
 const menuItems = [
   {
-    href: '/Home',
+    href: '/',
     label: 'Home',
   },
   {
