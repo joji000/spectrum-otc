@@ -15,7 +15,6 @@ import {
 } from '@mui/material'
 import { useState } from 'react'
 import NextLink from 'next/link'
-import { usePathname } from 'next/navigation'
 import OpenIcon from '../icons/OpenIcon'
 
 const menuItems = [
@@ -37,7 +36,6 @@ const drawerWidth = 262
 
 const TheMainHeader = () => {
   const [isSidebar, setSidebarOpen] = useState(false)
-  const pathname = usePathname()
 
   const handleSidebarToggle = () => {
     setSidebarOpen(!isSidebar)
@@ -52,24 +50,11 @@ const TheMainHeader = () => {
       }}
     >
       {menuItems.map((item, index) => {
-        const isActive = pathname === item.href
 
         return (
           <Link key={index} component={NextLink} href={item.href} passHref>
             <ListItem
-              sx={
-                isActive
-                  ? {
-                      color: 'common.white',
-                      backgroundColor: 'primary.main',
-
-                      '&:hover': {
-                        color: 'common.white',
-                        backgroundColor: 'primary.dark',
-                      },
-                    }
-                  : {}
-              }
+              
               onClick={handleSidebarToggle}
             >
               <ListItemText
@@ -143,7 +128,7 @@ const TheMainHeader = () => {
                 open={isSidebar}
                 onClose={handleSidebarToggle}
                 ModalProps={{
-                  keepMounted: true, // Better open performance on mobile
+                  keepMounted: true,
                 }}
                 sx={{
                   '& .MuiDrawer-paper': {
