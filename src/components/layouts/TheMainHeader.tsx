@@ -41,6 +41,18 @@ const TheMainHeader = () => {
     setSidebarOpen(!isSidebar)
   }
 
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    targetId: string
+  ) => {
+    e.preventDefault()
+    const targetElement = document.getElementById(targetId)
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' })
+    }
+    setSidebarOpen(false)
+  }
+
   const menuContent = (
     <List
       sx={{
@@ -174,6 +186,7 @@ const TheMainHeader = () => {
                 <Link
                   sx={{ color: 'common.white', fontWeight: '500' }}
                   key={menuItem.href}
+                  onClick={(e) => handleSmoothScroll(e, menuItem.href.replace('/#', ''))}
                   component={NextLink}
                   href={menuItem.href}
                 >
