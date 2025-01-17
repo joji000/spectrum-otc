@@ -9,6 +9,8 @@ import contentData from '@/services/contentData.json';
 interface Section {
   content?: string | string[];
   image?: string;
+  list?: string[];
+  link?: string;
 }
 
 const DocsHeader = () => {
@@ -18,10 +20,10 @@ const DocsHeader = () => {
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const searchQuery = e.target.value.toLowerCase();
     setQuery(searchQuery);
-
+  
     if (searchQuery.trim()) {
       const matchedResults: { label: string; href: string; snippet?: string }[] = [];
-
+  
       // Search through contentData
       Object.entries(contentData).forEach(([key, value]) => {
         const { title, subtitle, sections } = value as {
@@ -29,36 +31,51 @@ const DocsHeader = () => {
           subtitle?: string;
           sections?: Section[];
         };
-
+  
         let snippet = '';
-
+  
         // Check if the title matches
         if (title.toLowerCase().includes(searchQuery)) {
           snippet = title;
         }
-        
+  
         // Check if the subtitle matches
         if (subtitle && subtitle.toLowerCase().includes(searchQuery)) {
-        snippet = subtitle;
+          snippet = subtitle;
         }
-
+  
         // Check the content in sections
         if (sections) {
           sections.forEach((section) => {
+            // Check `section.content`
             if (section.content) {
               const contentArray = Array.isArray(section.content)
                 ? section.content
                 : [section.content];
-
+  
               contentArray.forEach((content) => {
                 if (content.toLowerCase().includes(searchQuery)) {
                   snippet = content; // Capture the matching content
                 }
               });
             }
+  
+            // Check `section.list`
+            if (section.list) {
+              section.list.forEach((listItem) => {
+                if (listItem.toLowerCase().includes(searchQuery)) {
+                  snippet = listItem; // Capture the matching list item
+                }
+              });
+            }
+  
+            // Check `section.link`
+            if (section.link && section.link.toLowerCase().includes(searchQuery)) {
+              snippet = section.link; // Capture the matching link
+            }
           });
         }
-
+  
         // Add result if any match is found
         if (snippet) {
           matchedResults.push({
@@ -68,7 +85,7 @@ const DocsHeader = () => {
           });
         }
       });
-
+  
       setResults(matchedResults);
     } else {
       setResults([]);
