@@ -11,6 +11,7 @@ interface Section {
   content?: string | string[];
   image?: string;
   list?: string[];
+  link?: string;
 }
 
 interface Content {
@@ -59,7 +60,19 @@ export default function DocTabPage() {
               ))}
             </ul>
           ) : (
-            section.content && <Typography fontWeight="light" variant="subtitle2">{section.content}</Typography>
+            section.content && <Typography fontWeight="light" variant="subtitle2">{section.content} {section.link && (
+              <a
+                href={section.link}
+                style={{
+                  color: '#4340FF',
+                  textDecoration: 'underline',
+                  fontSize: '1rem',
+                }}
+              >
+                {section.link}
+              </a>
+            )}
+            </Typography>
           )}
           {section.image && (
             <Box sx={{ my: 4, display: 'flex', justifyContent: 'center' }}>

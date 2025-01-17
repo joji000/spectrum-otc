@@ -8,11 +8,11 @@ const menuItems = [
     label: 'Home',
   },
   {
-    href: '/About',
+    href: '/#About',
     label: 'About',
   },
   {
-    href: '/FAQ',
+    href: '/#FAQ',
     label: 'FAQ',
   },
 ]

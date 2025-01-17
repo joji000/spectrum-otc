@@ -35,7 +35,8 @@
         "content": "You only need a Discord account to start using our platform."
       },
       {
-        "content": "Enter the platform from the following address: https://app.drop3.io/"
+        "content": "Enter the platform from the following address: ",
+        "link": "https://app.drop3.io"
       },
       {
         "content": "Then you will see the login icon at the top of the screen. Just click on it and sign in with your Discord account."

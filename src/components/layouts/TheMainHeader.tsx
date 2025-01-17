@@ -24,11 +24,11 @@ const menuItems = [
     label: 'Home',
   },
   {
-    href: '/About',
+    href: '/#About',
     label: 'About',
   },
   {
-    href: '/FAQ',
+    href: '/#FAQ',
     label: 'FAQ',
   },
 ]
@@ -159,7 +159,7 @@ const TheMainHeader = () => {
                 {logo}
                 <Stack gap={1}>
                   {menuContent}
-                  <Button variant="contained" startIcon={<OpenIcon/>}>APP</Button>
+                  <Button variant="contained" startIcon={<OpenIcon/>} href={'https://app.drop3.io/auth/login'}>APP</Button>
                   <Button variant="outlined" href={'/sign-in'}>Login</Button>
                 </Stack>
               </Drawer>
@@ -196,7 +196,7 @@ const TheMainHeader = () => {
                 </Link>
               )
             })}
-            <Button variant="contained" startIcon={<OpenIcon/>}>APP</Button>
+            <Button variant="contained" startIcon={<OpenIcon/>} href={'https://app.drop3.io/auth/login'}>APP</Button>
             <Button variant="outlined" href={'/sign-in'}>Login</Button>
           </Stack>
         </Stack>

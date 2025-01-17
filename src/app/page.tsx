@@ -29,7 +29,7 @@ export default function Home() {
           overflow: 'hidden',
         }}
       >
-        <Box
+        <Box id="About"
           sx={{
             position: 'absolute',
             inset: 0,
@@ -38,7 +38,7 @@ export default function Home() {
             zIndex: 1,
           }}
         />
-          <Container
+          <Container  
             sx={{
               position: 'relative',
               zIndex: 2,
@@ -81,7 +81,9 @@ export default function Home() {
               gap: 1,
               mt: 2
             }}>
-              <Button variant="contained" startIcon={<OpenIcon/>}>Launch App</Button>
+              <Link href="https://app.drop3.io/public-market" passHref>
+                <Button variant="contained" startIcon={<OpenIcon/>}>Launch App</Button>
+              </Link>
               <Link href="/docs/what-is-drop3" passHref>
                 <Button 
                   variant="contained" 
@@ -98,9 +100,9 @@ export default function Home() {
         <FeatureCardsContainer />
       </Container>
 
-      <Container sx={{ pt: 2, pb: 8 }}>
+      <Container sx={{ pt: 2, pb: 8}}>
         <Stack gap={3}>
-          <Typography variant="h3" color="gradient">
+          <Typography id="FAQ" variant="h3" color="gradient" >
             FAQ
           </Typography>
           <Grid2 container spacing={2}>
@@ -108,15 +110,15 @@ export default function Home() {
               <Stack gap={2}>
                 <QuestionAnswer
                   question="What is Drop3?"
-                  answer="Hosting games can be a great way to bring people together and have fun. Here are some types of games you can consider hosting, depending on the preferences of your group and the available resources"
+                  answer="We are the first automated OTC trading platform. Token/Point Market & NFT/WL Market and all other assets."
                 />
                 <QuestionAnswer
                   question="Why Drop3?"
-                  answer="Hosting games can be a great way to bring people together and have fun. Here are some types of games you can consider hosting, depending on the preferences of your group and the available resources"
+                  answer="All orders on our platform are done automatically and by the system, and you don't need a middleman. Therefore, this process makes the transaction more efficient and faster. Also, with our bots on X and Discord, your order will be more visible. Make your transactions easily in a secure environment and as quickly as possible."
                 />
                 <QuestionAnswer
                   question="What if we encounter a problem during the agreement?"
-                  answer="Hosting games can be a great way to bring people together and have fun. Here are some types of games you can consider hosting, depending on the preferences of your group and the available resources"
+                  answer="If the seller and buyer do not reach an agreement, they can send a middleman request so that our admins can join their chat and solve the problem."
                 />
               </Stack>
             </Grid2>
@@ -124,11 +126,11 @@ export default function Home() {
               <Stack gap={2}>
                 <QuestionAnswer
                   question="What should we do to place an order?"
-                  answer="Hosting games can be a great way to bring people together and have fun. Here are some types of games you can consider hosting, depending on the preferences of your group and the available resources"
+                  answer="To place an order, you only need to login with your Discord account. After login, you can easily create your order as a buyer or seller from the Create Order section."
                 />
                 <QuestionAnswer
                   question="How to make a purchase?"
-                  answer="Hosting games can be a great way to bring people together and have fun. Here are some types of games you can consider hosting, depending on the preferences of your group and the available resources"
+                  answer="You can see the open orders on the orders page and after selecting the order, buy immediately or send an offer to the creator."
                 />
               </Stack>
             </Grid2>
