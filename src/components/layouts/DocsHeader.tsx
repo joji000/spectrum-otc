@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState, ChangeEvent } from 'react';
-import { Avatar, Box, Container, Stack, TextField, InputAdornment, Typography, Paper, List, ListItem, Link } from '@mui/material';
+import { Avatar, Box, Container, Stack, TextField, InputAdornment, Typography, List, ListItem, Link, Paper } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import NextLink from 'next/link';
+import { useRouter } from 'next/navigation';
 import contentData from '@/services/contentData.json';
 
 interface Section {
@@ -16,14 +17,16 @@ interface Section {
 const DocsHeader = () => {
   const [query, setQuery] = useState<string>('');
   const [results, setResults] = useState<{ label: string; href: string; snippet?: string }[]>([]);
+  const [placeholder, setPlaceholder] = useState<string>('Search');
+  const router = useRouter();
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const searchQuery = e.target.value.toLowerCase();
     setQuery(searchQuery);
-  
+
     if (searchQuery.trim()) {
       const matchedResults: { label: string; href: string; snippet?: string }[] = [];
-  
+
       // Search through contentData
       Object.entries(contentData).forEach(([key, value]) => {
         const { title, subtitle, sections } = value as {
@@ -31,19 +34,19 @@ const DocsHeader = () => {
           subtitle?: string;
           sections?: Section[];
         };
-  
+
         let snippet = '';
-  
+
         // Check if the title matches
         if (title.toLowerCase().includes(searchQuery)) {
           snippet = title;
         }
-  
+
         // Check if the subtitle matches
         if (subtitle && subtitle.toLowerCase().includes(searchQuery)) {
           snippet = subtitle;
         }
-  
+
         // Check the content in sections
         if (sections) {
           sections.forEach((section) => {
@@ -52,44 +55,60 @@ const DocsHeader = () => {
               const contentArray = Array.isArray(section.content)
                 ? section.content
                 : [section.content];
-  
+
               contentArray.forEach((content) => {
                 if (content.toLowerCase().includes(searchQuery)) {
-                  snippet = content; // Capture the matching content
+                  snippet = content;
                 }
               });
             }
-  
+
             // Check `section.list`
             if (section.list) {
               section.list.forEach((listItem) => {
                 if (listItem.toLowerCase().includes(searchQuery)) {
-                  snippet = listItem; // Capture the matching list item
+                  snippet = listItem;
                 }
               });
             }
-  
+
             // Check `section.link`
             if (section.link && section.link.toLowerCase().includes(searchQuery)) {
-              snippet = section.link; // Capture the matching link
+              snippet = section.link;
             }
           });
         }
-  
+
         // Add result if any match is found
         if (snippet) {
           matchedResults.push({
             label: title,
             href: `/docs/${key}`,
-            snippet, // Include the matching snippet
+            snippet,
           });
         }
       });
-  
+
       setResults(matchedResults);
     } else {
       setResults([]);
     }
+  };
+
+  const handleResultClick = (href: string) => {
+    sessionStorage.setItem('searchQuery', query);
+    setQuery('');
+    setResults([]);
+    setPlaceholder('Search'); 
+    router.push(href);
+  };
+
+  const handleFocus = () => {
+    setPlaceholder('');
+  };
+
+  const handleBlur = () => {
+    setPlaceholder('Search');
   };
 
   return (
@@ -132,11 +151,13 @@ const DocsHeader = () => {
             {/* Search Input */}
             <Box sx={{ position: 'relative', width: '253px' }}>
               <TextField
-                placeholder="Search"
+                placeholder={placeholder}
                 variant="outlined"
                 size="small"
                 value={query}
                 onChange={handleSearch}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
                 sx={{
                   width: '100%',
                   borderRadius: '4px',
@@ -179,12 +200,12 @@ const DocsHeader = () => {
                   {results.length > 0 ? (
                     <List>
                       {results.map((result, index) => (
-                        <ListItem key={index} sx={{ padding: '8px 16px', display: 'block' }}>
-                          <Link href={result.href} underline="hover" sx={{ color: 'inherit', fontWeight: 'bold' }}>
+                        <ListItem key={index} onClick={() => handleResultClick(result.href)} sx={{ padding: '8px 16px', display: 'block' }}>
+                          <Link underline="hover" sx={{ color: 'inherit', fontWeight: 'bold' }}>
                             {result.label}
                           </Link>
                           {result.snippet && (
-                            <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)', }}>
+                            <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                               {result.snippet}
                             </Typography>
                           )}
