@@ -15,21 +15,35 @@
     "@mui/icons-material": "^6.3.1",
     "@mui/material": "^6.3.1",
     "@mui/material-nextjs": "^6.3.1",
+    "@prisma/client": "^6.2.1",
     "@reduxjs/toolkit": "^2.5.0",
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.48.0",
     "@tanstack/react-query": "^5.64.1",
     "@tanstack/react-query-devtools": "^5.64.1",
+    "@thirdweb-dev/engine": "^0.0.18",
+    "@thirdweb-dev/sdk": "^4.0.99",
+    "axios": "^1.7.9",
+    "ethers": "^5.7.2",
     "next": "15.1.4",
+    "numeral": "^2.0.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-redux": "^9.2.0"
+    "react-redux": "^9.2.0",
+    "thirdweb": "^5.85.0",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
+    "@types/node": "^20.17.14",
+    "@types/numeral": "^2.0.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.4",
-    "typescript": "^5"
+    "jest": "^29.7.0",
+    "prisma": "^6.2.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
   }
 }

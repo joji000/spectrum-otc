@@ -11,8 +11,7 @@ const CustomLoginButton: React.FC<CustomLoginButton> = ({
   logo,
   text,
   onClick,
-}) => {
-  return (
+}) => (
     <Button
       onClick={onClick}
       sx={{
@@ -30,7 +29,7 @@ const CustomLoginButton: React.FC<CustomLoginButton> = ({
           justifyContent: 'center',
         }}
       >
-        <Avatar src={logo}></Avatar>
+        <Avatar src={logo} />
       </Box>
       <Typography
         variant="body1"
@@ -46,6 +45,5 @@ const CustomLoginButton: React.FC<CustomLoginButton> = ({
       </Typography>
     </Button>
   )
-}
 
 export default CustomLoginButton

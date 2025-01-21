@@ -3,7 +3,7 @@ import { Box, Stack } from '@mui/material'
 import { PropsWithChildren } from 'react'
 import TheMainFooter from './TheMainFooter'
 import { usePathname } from "next/navigation";
-import TheMainHeader from "@/components/layouts/TheMainHeader";
+import TheMainHeader from './TheMainHeader';
 import DocsHeader from "@/components/layouts/DocsHeader";
 import LoginHeader from './LoginHeader';
 
