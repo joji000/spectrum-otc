@@ -47,13 +47,9 @@ const DashboardPage: React.FC = () => {
 
   return (
     <TheMainSidebar title="Welcome back!">
-      <Card variant="primaryGradient">
-      <Box padding={2}>
-        <Typography variant="h6" gutterBottom>
-          Wallet Information
-        </Typography>
-        <Divider sx={{ marginBottom: 2 }} />
+      <Box padding={2} display="flex" flexDirection="column" gap={2}>
         <>
+        <Card variant="primaryGradient" sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
           <Typography>
             <strong>Wallet Address : </strong> 
             <Link
@@ -67,18 +63,21 @@ const DashboardPage: React.FC = () => {
           <Typography>
             <strong>Balance : </strong> {balance1.data?.displayValue} XL3
           </Typography>
+          </Card>
+
+          <Card variant="primaryGradient" sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
           <Typography variant="h6" gutterBottom>
             Token Balances
           </Typography>
-          <Divider sx={{ marginBottom: 2 }} />
-          <TableContainer component={Paper} sx={{ boxShadow: 'none', backgroundColor: 'transparent' }}>
-            <Table sx={{ borderCollapse: 'collapse' }}>
+          <Divider sx={{ border: 0.5}}/>
+          <TableContainer component={Paper} sx={{ boxShadow: 'none', backgroundColor: 'transparent'}}>
+            <Table sx={{ borderCollapse: 'collapse',}}>
               <TableHead>
                 <TableRow>
-                  <TableCell ><strong>Logo</strong></TableCell>
-                  <TableCell ><strong>Symbol</strong></TableCell>
-                  <TableCell ><strong>Address</strong></TableCell>
-                  <TableCell ><strong>Value</strong></TableCell>
+                  <TableCell sx={{ borderBottom: 2}}><strong>Logo</strong></TableCell>
+                  <TableCell sx={{ borderBottom: 2}}><strong>Symbol</strong></TableCell>
+                  <TableCell sx={{ borderBottom: 2}}><strong>Address</strong></TableCell>
+                  <TableCell sx={{ borderBottom: 2}}><strong>Balance</strong></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -95,9 +94,9 @@ const DashboardPage: React.FC = () => {
               </TableBody>
             </Table>
           </TableContainer>
+          </Card>
         </>
       </Box>
-      </Card>
     </TheMainSidebar>
   );
 };
