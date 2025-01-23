@@ -47,7 +47,7 @@ const DashboardPage: React.FC = () => {
 
   return (
     <TheMainSidebar title="Welcome back!">
-      <Box padding={2} display="flex" flexDirection="column" gap={2}>
+      <Box display="flex" flexDirection="column" gap={2}>
         <>
         <Card variant="primaryGradient" sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
           <Typography>
