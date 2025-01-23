@@ -1,6 +1,20 @@
 'use client';
 import React, { useState, useEffect, useCallback } from 'react';
-import { Box, Typography, Divider, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar } from '@mui/material';
+import { 
+  Box, 
+  Typography, 
+  Divider, 
+  Table, 
+  TableBody, 
+  TableCell, 
+  TableContainer, 
+  TableHead, 
+  TableRow, 
+  Paper, 
+  Avatar, 
+  Card,
+  Link
+ } from '@mui/material';
 
 import TheMainSidebar from '@/components/layouts/TheMainSidebar';
 import useGetMe from '@/hooks/user/useGetMe';
@@ -33,6 +47,7 @@ const DashboardPage: React.FC = () => {
 
   return (
     <TheMainSidebar title="Welcome back!">
+      <Card variant="primaryGradient">
       <Box padding={2}>
         <Typography variant="h6" gutterBottom>
           Wallet Information
@@ -40,22 +55,30 @@ const DashboardPage: React.FC = () => {
         <Divider sx={{ marginBottom: 2 }} />
         <>
           <Typography>
-            <strong>Wallet Address:</strong> {user?.walletAddress || 'Not available'}
+            <strong>Wallet Address : </strong> 
+            <Link
+                  href={`${process.env.NEXT_PUBLIC_EXP_BLOCKSCOUNT_URL}/address/${user?.walletAddress}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+            {user?.walletAddress}
+            </Link>
           </Typography>
           <Typography>
-            <strong>Balance:</strong> {balance1.data?.displayValue || 'Not available'} XL3
+            <strong>Balance : </strong> {balance1.data?.displayValue} XL3
           </Typography>
           <Typography variant="h6" gutterBottom>
             Token Balances
           </Typography>
-          <TableContainer component={Paper} sx={{ boxShadow: 'none' }}>
+          <Divider sx={{ marginBottom: 2 }} />
+          <TableContainer component={Paper} sx={{ boxShadow: 'none', backgroundColor: 'transparent' }}>
             <Table sx={{ borderCollapse: 'collapse' }}>
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ borderBottom: 'none' }}><strong>Logo</strong></TableCell>
-                  <TableCell sx={{ borderBottom: 'none' }}><strong>Symbol</strong></TableCell>
-                  <TableCell sx={{ borderBottom: 'none' }}><strong>Address</strong></TableCell>
-                  <TableCell sx={{ borderBottom: 'none' }}><strong>Value</strong></TableCell>
+                  <TableCell ><strong>Logo</strong></TableCell>
+                  <TableCell ><strong>Symbol</strong></TableCell>
+                  <TableCell ><strong>Address</strong></TableCell>
+                  <TableCell ><strong>Value</strong></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -74,6 +97,7 @@ const DashboardPage: React.FC = () => {
           </TableContainer>
         </>
       </Box>
+      </Card>
     </TheMainSidebar>
   );
 };

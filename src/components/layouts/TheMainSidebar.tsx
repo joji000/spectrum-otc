@@ -94,7 +94,7 @@ const TheMainSidebar = ({ title, children }: TheMainSidebarProps) => {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundImage: 'url(/bg-main.png)',
+          backgroundImage: 'url(/BG-main.png)',
           width: '100%',
           height: { xs: '300px', md: '300px' },
           zIndex: -1,
