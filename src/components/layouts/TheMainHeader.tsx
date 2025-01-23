@@ -145,7 +145,7 @@ const TheMainHeader = () => {
                 {getBalanceHook.isLoading && (
                   <CircularProgress sx={{ mr: 0.5 }} size="10px" />
                 )}
-                {getBalanceHook.data?.displayValue} Credit
+                {getBalanceHook.data?.displayValue} XL3
               </Typography>
             </Stack>
 
@@ -187,7 +187,7 @@ const TheMainHeader = () => {
         </>
       )
     },
-    [anchorEl, handleGotoAccount, user, isLoading, getBalanceHook.data]
+    [isLoading, user, handleGotoAccount, getBalanceHook.isLoading, getBalanceHook.data?.displayValue, anchorEl]
   )
 
   const menuContent = (

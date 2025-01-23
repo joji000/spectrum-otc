@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 
 import type { Balance } from '@/interfaces/user.interface'
 import { withAuth } from '@/server/middlewares/auth.middleware'
-import { getL3USDBalance } from '@/server/services/engine.service'
+import { getBalance } from '@/server/services/engine.service'
 import { handleError } from '@/server/utils/handle-error.util'
 
 export const GET = withAuth(async (req: NextRequest) => {
@@ -22,7 +22,7 @@ export const GET = withAuth(async (req: NextRequest) => {
       return NextResponse.json(defaultBalance)
     }
 
-    const balance = await getL3USDBalance(user.walletAddress)
+    const balance = await getBalance(user.walletAddress)
 
     return NextResponse.json(balance.result)
   } catch (error) {

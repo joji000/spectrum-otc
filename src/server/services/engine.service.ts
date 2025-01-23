@@ -1,20 +1,19 @@
 import engine from '../libs/engine.lib'
 
 const engineChainId = process.env.ENGINE_CHAIN_ID ?? ''
-const engineL3USDContractAddress =
-  process.env.ENGINE_L3USD_CONTRACT_ADDRESS ?? ''
 
 
-export const getL3USDBalance = async (walletAddress: string) => {
+
+export const getBalance = async (walletAddress: string) => {
   try {
-    const response = await engine.erc20.balanceOf(
-      walletAddress,
+    const response = await engine.backendWallet.getBalance(
       engineChainId,
-      engineL3USDContractAddress
+      walletAddress,
+      
     )
     return response
   } catch (error) {
     console.error('Balance error:', error)
-    throw error
+    throw error // Rethrow to handle it in the calling function
   }
 }
