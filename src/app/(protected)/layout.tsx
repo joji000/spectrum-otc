@@ -3,7 +3,6 @@ import type { PropsWithChildren } from 'react'
 
 import { Route } from '@/enums/route.enum'
 import { createClient } from '@/utils/supabase/server.util'
-import { ThirdwebProvider } from "thirdweb/react";
 
 const ProtectedLayout = async ({ children }: PropsWithChildren) => {
   const supabase = await createClient()
@@ -16,11 +15,7 @@ const ProtectedLayout = async ({ children }: PropsWithChildren) => {
     return redirect(Route.SIGN_IN)
   }
 
-  return (
-    <ThirdwebProvider>
-      {children}
-    </ThirdwebProvider> 
-  )
+  return children
 }
 
 export default ProtectedLayout
