@@ -18,21 +18,6 @@ export const getMe = async () => {
   }
 }
 
-export const getUserBySlug = async (slug: string) => {
-  try {
-    const { data } = await axiosClient.get<User>(`/users/slugs/${slug}`)
-
-    return data
-  } catch (error) {
-    if (isAxiosError(error)) {
-      throw error.response?.data
-    }
-
-    throw error
-  }
-}
-
-
 export const getBalance = async () => {
   try {
     const { data } = await axiosClient.get<Balance>('/auth/me/balance')
