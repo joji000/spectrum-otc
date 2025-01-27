@@ -21,7 +21,9 @@ import { Route } from '@/enums/route.enum'
 
 const menuItems = [
   { label: 'Dashboard', route: Route.DASHBOARD },
+  { label: 'Send', route: Route.SEND },
   { label: 'Account', route: Route.ACCOUNT },
+  
 
 ]
 
