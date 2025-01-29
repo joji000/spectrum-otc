@@ -1,5 +1,4 @@
-'use client';
-
+'use client'
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   Box,
@@ -15,12 +14,14 @@ import {
   DialogTitle,
   Alert,
   Avatar,
+  InputAdornment
 } from '@mui/material';
 
 import TheMainSidebar from '@/components/layouts/TheMainSidebar';
 import useGetMe from '@/hooks/user/useGetMe';
 
 import { fetchTokens } from '@/services/token.services';
+import { transferTokens } from '@/services/transfer.services';
 import { Token } from '@/interfaces/token.interface';
 
 const SendTokenPage: React.FC = () => {
@@ -41,7 +42,7 @@ const SendTokenPage: React.FC = () => {
 
     const tokensData = await fetchTokens(user.walletAddress);
     setTokens(tokensData);
-    setFromAccount(user.walletAddress); // Set the fromAccount to the user's wallet address
+    setFromAccount(user.walletAddress);
   }, [user?.walletAddress]);
 
   useEffect(() => {
@@ -59,6 +60,8 @@ const SendTokenPage: React.FC = () => {
     const value = parseFloat(e.target.value);
     if (value >= 0) {
       setAmount(e.target.value);
+    } else {
+      setAmount('');
     }
   };
 
@@ -81,21 +84,31 @@ const SendTokenPage: React.FC = () => {
       return;
     }
 
-    setDialogOpen(true); // Open the dialog for confirmation
+    setDialogOpen(true); 
   };
 
-  const handleConfirmTransaction = () => {
-    setDialogOpen(false); // Close the dialog
+  const handleConfirmTransaction = async () => {
+    setDialogOpen(false); 
 
-    // Simulate a transaction process
-    if (!fromAccount || !toAccount || !amount) {
+    
+    const selectedToken = tokens.find((t) => t.symbol === token);
+
+    if (!selectedToken) {
       setAlertType('error');
-      setAlertMessage('Please fill in all fields before proceeding.');
-    } else {
+      setAlertMessage('Token not found.');
+      return;
+    }
+
+    try {
+      
+      await transferTokens(fromAccount, toAccount, selectedToken.address, amount);
+
       setAlertType('success');
-      setAlertMessage(
-        `Transaction sent: ${amount} ${token} from ${fromAccount} to ${toAccount}.`
-      );
+      setAlertMessage(`Transaction sent: ${amount} ${token} from ${fromAccount} to ${toAccount}.`);
+    } catch (error: unknown) {
+      console.error('Transaction failed:', (error as Error).message || error);
+      setAlertType('error');
+      setAlertMessage((error as Error).message || 'Transaction failed. Please try again.');
     }
   };
 
@@ -138,15 +151,17 @@ const SendTokenPage: React.FC = () => {
               variant="outlined"
               fullWidth
               value={fromAccount}
-              InputProps={{
-                readOnly: true,
+              slotProps={{
+                input: {
+                  readOnly: true,
+                },
               }}
             />
 
             {/* To Account */}
             <TextField
               label="Recipient Address"
-              placeholder="0x... (Recipient address)"
+              placeholder="Recipient address"
               variant="outlined"
               fullWidth
               value={toAccount}
@@ -166,7 +181,7 @@ const SendTokenPage: React.FC = () => {
                 <MenuItem key={token.address} value={token.symbol}>
                   <Box display="flex" alignItems="center" gap={1}>
                     {token.logoURI && (
-                      <Avatar src={token.logoURI} alt={token.symbol} sx={{ width: 24, height: 24 }} />
+                      <Avatar src={token.logoURI || undefined} alt={token.symbol} sx={{ width: 24, height: 24 }} />
                     )}
                     {token.symbol}
                   </Box>
@@ -189,6 +204,11 @@ const SendTokenPage: React.FC = () => {
                 fullWidth
                 value={amount}
                 onChange={handleAmountChange}
+                slotProps={{
+                  input: {
+                    endAdornment: <InputAdornment position="end">{token}</InputAdornment>,
+                  },
+                }}
               />
               <Button variant="outlined" onClick={handleSetMaxAmount}>
                 Max
@@ -197,7 +217,7 @@ const SendTokenPage: React.FC = () => {
 
             {/* Buttons */}
             <Box display="flex" justifyContent="space-between" gap={2}>
-            <Button
+              <Button
                 variant="outlined"
                 color="secondary"
                 fullWidth
@@ -209,7 +229,7 @@ const SendTokenPage: React.FC = () => {
                   setTokenBalance('');
                 }}
               >
-                Reset
+                Clear
               </Button>
               <Button variant="contained" color="primary" fullWidth onClick={handleContinue}>
                 Continue
