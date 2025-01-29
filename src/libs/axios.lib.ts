@@ -11,6 +11,7 @@ const axiosClient = axios.create({
 })
 
 axiosClient.interceptors.request.use(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async (config: any) => {
     if (typeof window === 'undefined') {
       return config

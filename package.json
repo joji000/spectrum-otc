@@ -23,6 +23,7 @@
     "@tanstack/react-query-devtools": "^5.64.1",
     "@thirdweb-dev/engine": "^0.0.18",
     "@thirdweb-dev/sdk": "^4.0.99",
+    "@types/react-qr-reader": "^2.1.7",
     "axios": "^1.7.9",
     "dotenv": "^16.4.7",
     "ethers": "^5.7.2",
