@@ -3,5 +3,5 @@ export enum Route {
   SIGN_IN = '/sign-in',
   DASHBOARD = '/dashboard',
   ACCOUNT = '/account',
-  SEND = '/send'
+  TRANSFER = '/transfer'
 }

@@ -1,4 +1,3 @@
-'use client'
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   Box,
@@ -16,18 +15,17 @@ import {
   Avatar,
   InputAdornment
 } from '@mui/material';
-
-import TheMainSidebar from '@/components/layouts/TheMainSidebar';
-import useGetMe from '@/hooks/user/useGetMe';
-
+import QRScanner from '@/components/QrScanner'; // Adjust the import path as necessary
 import { fetchTokens } from '@/services/token.services';
 import { transferTokens } from '@/services/transfer.services';
 import { Token } from '@/interfaces/token.interface';
-import QRScanner from '@/components/QrScanner'; // Adjust the import path as necessary
 
-const SendTokenPage: React.FC = () => {
-  const { data: user } = useGetMe();
+interface SendTokenProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  user: any;
+}
 
+const SendToken: React.FC<SendTokenProps> = ({ user }) => {
   const [tokens, setTokens] = useState<Token[]>([]);
   const [fromAccount, setFromAccount] = useState('');
   const [toAccount, setToAccount] = useState('');
@@ -40,10 +38,7 @@ const SendTokenPage: React.FC = () => {
 
   const handleQrScanSuccess = (scannedTokenContract: string | null, scannedAddress: string, scannedValue: string) => {
     setToAccount(scannedAddress);
-  
-
     setAmount(scannedValue);
-  
     // If QR contains a token contract, match it to the correct token
     if (scannedTokenContract) {
       const matchedToken = tokens.find((t) => t.address.toLowerCase() === scannedTokenContract.toLowerCase());
@@ -139,7 +134,7 @@ const SendTokenPage: React.FC = () => {
   };
 
   return (
-    <TheMainSidebar title="Send Token">
+    <>
       <Box display="flex" flexDirection="column" gap={2}>
         <Card
           variant="primaryGradient"
@@ -294,8 +289,8 @@ const SendTokenPage: React.FC = () => {
           {alertMessage}
         </Alert>
       )}
-    </TheMainSidebar>
+    </>
   );
 };
 
-export default SendTokenPage;
+export default SendToken;
