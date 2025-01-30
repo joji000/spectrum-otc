@@ -23,6 +23,7 @@ import useGetMe from '@/hooks/user/useGetMe';
 import { fetchTokens } from '@/services/token.services';
 import { transferTokens } from '@/services/transfer.services';
 import { Token } from '@/interfaces/token.interface';
+import QRScanner from '@/components/QrScanner'; // Adjust the import path as necessary
 
 const SendTokenPage: React.FC = () => {
   const { data: user } = useGetMe();
@@ -36,6 +37,22 @@ const SendTokenPage: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
   const [alertType, setAlertType] = useState<'success' | 'error' | null>(null);
+
+  const handleQrScanSuccess = (scannedTokenContract: string | null, scannedAddress: string, scannedValue: string) => {
+    setToAccount(scannedAddress);
+  
+
+    setAmount(scannedValue);
+  
+    // If QR contains a token contract, match it to the correct token
+    if (scannedTokenContract) {
+      const matchedToken = tokens.find((t) => t.address.toLowerCase() === scannedTokenContract.toLowerCase());
+      if (matchedToken) {
+        setToken(matchedToken.symbol);
+        setTokenBalance(matchedToken.value);
+      }
+    }
+  };
 
   const fetchTokensCallback = useCallback(async () => {
     if (!user?.walletAddress) return;
@@ -159,14 +176,17 @@ const SendTokenPage: React.FC = () => {
             />
 
             {/* To Account */}
-            <TextField
-              label="Recipient Address"
-              placeholder="Recipient address"
-              variant="outlined"
-              fullWidth
-              value={toAccount}
-              onChange={(e) => setToAccount(e.target.value)}
-            />
+            <Box display="flex" alignItems="center" gap={2}>
+              <TextField
+                label="Recipient Address"
+                placeholder="Recipient address"
+                variant="outlined"
+                fullWidth
+                value={toAccount}
+                onChange={(e) => setToAccount(e.target.value)}
+              />
+              <QRScanner onScanSuccess={handleQrScanSuccess}/>
+            </Box>
 
             {/* Token Selector */}
             <TextField
